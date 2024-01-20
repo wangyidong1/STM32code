@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<MThings>
+	<PORT_LIST />
+	<SIGNT SYS_DATA="" ALARM="" HISDATA="" />
+	<HISDATA />
+	<ALARM_LIST>
+		<TYPELIST />
+	</ALARM_LIST>
+	<SYS_DATA Title="" BackColor="#ff222a35" width="1920" hight="930" PicPath="./pic/stat1.png" />
+	<DEVICE_LIST />
+</MThings>
