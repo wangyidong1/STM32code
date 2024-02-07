@@ -23,7 +23,7 @@ int main(void)
     led_init();                                 /* 初始化LED */
     lcd_init();                                 /* 初始化LCD */
     key_init();                                 /* 初始化按键 */
-    rs485_init(9600);                           /* 初始化RS485 */
+    rs485_init(115200);                           /* 初始化RS485 */
 
     lcd_show_string(30,  50, 200, 16, 16, "STM32", RED);
     lcd_show_string(30,  70, 200, 16, 16, "RS485 TEST", RED);
@@ -46,7 +46,7 @@ int main(void)
 				rs485buf[i]=i;
                 lcd_show_xnum(30 + i * 32, 170, rs485buf[i], 3, 16, 0X80, BLUE);    /* 显示数据 */
             }
-
+			//LED0_TOGGLE();
             rs485_send_data(rs485buf, 5);   /* 发送5个字节 */
         }
 
@@ -54,12 +54,13 @@ int main(void)
 
         if (key)    /* 接收到有数据 */
         {
-            if (key > 5)key = 5;    /* 最大是5个数据. */
-
+            if (key > 5)  key = 5;    /* 最大是5个数据. */
+			LED0_TOGGLE();
+			delay_ms(10);
             for (i = 0; i < key; i++)
             {
                 lcd_show_xnum(30 + i * 32, 210, rs485buf[i], 3, 16, 0X80, BLUE);    /* 显示数据 */
-				
+				printf("%d\r\n",rs485buf[i]);
             }
         }
 
@@ -68,7 +69,7 @@ int main(void)
 
         if (t == 20)
         {
-            LED0_TOGGLE();  /* LED0闪烁, 提示系统正在运行 */
+            //LED0_TOGGLE();  /* LED0闪烁, 提示系统正在运行 */
             t = 0;
             cnt++;
             lcd_show_xnum(30 + 48, 130, cnt, 3, 16, 0X80, BLUE);    /* 显示数据 */

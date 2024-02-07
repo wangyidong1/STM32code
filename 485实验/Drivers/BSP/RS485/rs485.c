@@ -1,29 +1,7 @@
-/**
- ****************************************************************************************************
- * @file        rs485.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2020-04-24
- * @brief       RS485 驱动代码
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 STM32F103开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- * 修改说明
- * V1.0 20200424
- * 第一次发布
- *
- ****************************************************************************************************
- */
-
 #include "./BSP/RS485/rs485.h"
 #include "./SYSTEM/delay/delay.h"
+#include "./SYSTEM/usart/usart.h"
+#include "./BSP/LED/led.h"
 
 UART_HandleTypeDef g_rs458_handler;     /* RS485控制句柄(串口) */
 
@@ -39,7 +17,7 @@ void RS485_UX_IRQHandler(void)
     if ((__HAL_UART_GET_FLAG(&g_rs458_handler, UART_FLAG_RXNE) != RESET)) /* 接收到数据 */
     {
         HAL_UART_Receive(&g_rs458_handler, &res, 1, 1000);
-
+		LED0_TOGGLE();
         if (g_RS485_rx_cnt < RS485_REC_LEN)         /* 缓冲区未满 */
         {
             g_RS485_rx_buf[g_RS485_rx_cnt] = res;   /* 记录接收到的值 */
@@ -111,6 +89,7 @@ void rs485_send_data(uint8_t *buf, uint8_t len)
 {
     RS485_RE(1);                                         /* 进入发送模式 */
     HAL_UART_Transmit(&g_rs458_handler, buf, len, 1000); /* 串口2发送数据 */
+	//printf("ok");
     g_RS485_rx_cnt = 0;
     RS485_RE(0); /* 进入接收模式 */
 }

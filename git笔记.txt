@@ -1,0 +1,18 @@
+删除Github中已有仓库或文件  setting Danger Zone 删除
+在github上不能直接删除仓库中的文件，这时我们可以借助工具git进行删除操作。
+让自己的电脑克隆一个自己所创建的库，方面自己电脑上的代码同步到GitHub你所创建的库当中。  为了实现，就需要安装一个软件，Git Bash。
+git-scm.com
+首先要在本地创建一个ssh key 这个的目的就是你现在需要在你电脑上获得一个密匙，就是咱们平时的验证码一样的东西，获取之后，在你的GitHub账号里边输入之后，你的电脑就和你的GitHub账号联系在一起了
+$ ssh-keygen-t rsa-C "your_email@youremail.com"
+现在你就需要去他刚刚显示的存储位置打开它，把其中的内容复制出来。
+现在你就需要登录到你的GitHub上边添加这个密匙
+GitHub的设置界面，找到SSH and GPG keys
+然后把你在刚刚文件中复制的密匙，填写在下边的大框里。保存即可。
+
+$ ssh -T git@github.com
+$ git config --global user.name "your name"
+$ git config --global user.emal "your_email@"
+
+git clone https//
+git add .
+git commit -m "注释"

@@ -1,0 +1,146 @@
+crl+alt+t open bash
+
+gcc对c语言的处理过程
+4个步骤：
+    预处理，C语言处理的第一阶段，gcc需要对C语言源文件中包含的各种头文件和宏定义进行处理，如：#define #include #if等
+    编译，根据源文件产生汇编语言，首先检查代码的规范性、是否有语法错误等
+    汇编， 将刚得到的汇编语言用于输入，产生.o 拓展名的目标文件
+    链接，各目标文件被gcc放在可执行文件的适当位置上
+
+预处理阶段产生预处理文件，后缀名为.i
+编译阶段，会生成汇编代码文件.s
+汇编阶段，将.s文件转换为目标文件.o
+
+gcc基本使用格式
+gcc [选项] 文件名
+-c
+-o .out文件
+-g 调试
+可执行文件，通常以绿色在终端中显示。gcc Examhello.c Examhellosun.c -o Examhello
+Linux C语言的调试工具gdb
+GBK调试程序，主要提供的功能：
+
+    监视程序中变量的值
+    设置断点以使程序的指定的代码行上停止执行
+    一行行的执行代码
+gdb是在Linux安装时自带的，在命令行上输入"gdb" 会启动gdb调试环境
+
+gdb的功能很强大，包括从简单的文件装入到允许检查所调用的堆栈内容的复杂命令。
+
+gdb<可执行程序名>     指令 file kill list next step run quit watch make return value break
+
+Linux 基础应用编程知识、嵌入式系统硬件设备应用编程以及实战小项目
+
+打开，读写，关闭 文件描述符 数值，0，1，2系统占用 open返回一个fd 
+C 语言编程以及 Linux 操作系统功底 入门
+应用程序负责处理应用层用户需求、逻辑，而驱动程序负责内核层硬件底层操作， Linux 操作系
+统向应用层提供了封装好的 API 函数（也称为系统调用），应用层通过系统调用可以完成对系统硬件设备
+的操作、控制；Ubuntu、 CentOS、 Debian 
+ 基础：文件 IO 操作、文件高级 IO、文件属性、系统信息、进程、线程、进程间通信、信号以及线程同步等
+编写应用程序控制板子上的各种硬件外设。譬如 LED、 GPIO、 PWM、串口、摄像头、 LCD、看门狗、音频、网络编程
+父进程
+Linux 系统向应用层提供了丰富的 API 函数，譬如 socket接口及其相关函数。网络编程架构、网卡、路由器、交换机、
+TCP/IP 协议  MQTT 实战小项目
+《UNIX 环境高级编程》、《Linux/UNIX 系统编程手册》 （分为上册和下册） 、《UNIX 网络编程》
+
+应用编程（也可称为系统编程) 系统调用（system call）Windows 应用编程，操作系统内核一般都会向应用程序提供应用编程接口 API
+Linux 驱动编程指的是基于内核驱动框架开发驱动程序， 驱动开发工程师通过调用 Linux 内核提供的接口
+完成设备驱动的注册， 驱动程序负责底层硬件操作相关逻辑， 
+ Linux 应用编程（系统编程）则指的是基于 Linux 操作系统的应用编程，在应用程序中通过调
+用系统调用 API 完成应用程序的功能和逻辑， 应用程序运行于操作系统之上。
+
+库函数也就是 C 语言库函数,有些库函数并不调用任何系统调用，譬如一些字符串处理函数 strlen()、 strcat()、 memcpy()、 memset()、 strchr(),有些系统调用使用起来并不是很方便， 于是就出现了 C 语言库
+GNU C 语 言 函 数 库 （ 也 叫 作 glibc） main 函数写法之有传参
+ vscode+gcc 编写的应用程序是需要在开发板上运行的  ARM 架构硬件平台，所以源码需要使用交叉编译工具（ARM 架构下的 gcc 编译器） 进行编译，得到可在开发板上运行的可执行文件。 vscode+ARM gcc（交叉编译工具）
+cmake 
+解压sudo tar -xzf  chmod u+x eclipse.desktop
+ Linux 应用编程中最基础的知识，即文件 I/O（Input、 Outout） ， 文件 I/O 指的是对文件的输入/输出操作，说白了就是对文件的读写操作； Linux 下一切皆文件  
+块大于扇区
+inode inode区 管理表项  
+PCB 进程控制块  数据结构 内核设置 结构体  管理进程 
+错误编号errno 变量 int  #include<errno.h> perror
+空洞文件 多线程 原子操作 操作不能分割
+同一文件被多次打开 多对一 文件共享 文件描述符 dup
+文件共享 线程是进程中的独立的执行流 一个进程包含多个线程 
+截断文件 truncate ftruncate   fcntl ioctl 对fd做控制操作
+
+
+信号 通知机制 信号是发生事件时对进程的一种通知机制  信号是用来通信的  进程处理信号  
+
+进程 正在运行的程序
+
+I.MX6U开发板 电子信息技术飞速发展的年代，小到玩具，家电，大到手机、飞机、潜艇等，都离不开电子信息技术。
+一个功能完善的操作系统显得尤为重要：具有统一的标准；提供完善的多任务管理、存储管理、设备管理、文件管理和网络等。 Linux 就是这样一个系统 
+Cortex-M 内核的 MCU 三星的 2440   NXP 的 I.MX6UL 安装Linux 系统，学习过 STM32 的话可
+以跳过裸机学习  Linux 驱动开发了，但是在进行 Linux 驱动开发之前要先在使用
+的开发板平台上移植好 Uboot， Linux 和根文件系统。这是 Linux 驱动开发的第一个拦路虎，
+因此本书和相应的视频会着重讲解 Uboot/Linux 和根文件系统的移植  Linux 驱动有三大类:字符设备驱动、块设备驱动和网络设备驱动  
+Windows 和 Ubuntu 下的文件互传我们需要使用 FTP 服务 ubuntu下NFS和SSH服务开启
+开启 Ubuntu 的 SSH 服务以后我们就可以在 Windwos 下使用终端软件登陆到 Ubuntu，比如
+使用 SecureCRT  Ubuntu 自带的 gcc 编译器是针对 X86 架构的
+编译的是 ARM 架构的代码，所以我们需要一个在 X86 架构的 PC 上运行，可以编译 ARM 架
+构代码的 GCC 编译器，这个编译器就叫做交叉编译器 Linaro 出品的交叉编译器 最著名的就是 Linaro GCC 编译工具链(编译
+器)     arm-linux-gnueabihf  gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf.tar.xz。
+sudo apt-get install  
+1、 arm 表示这是编译 arm 架构代码的编译器。
+2、 linux 表示运行在 linux 环境下。
+3、 gnueabihf 表示嵌入式二进制接口。
+4、 gcc 表示是 gcc 工具
+  Source Insight 4.0  需要购买 License  先新建一个工程文件夹， 比如 test， test 用来存放工程所有文件，包括 Source Insight 工程文件刚刚创建的 test 文件夹中新建一个 SI 文件夹，用来存放 Source Insight 的所有工程文件，和 C 语言源码文件。
+注意！ Source Insight 的工程不能有中文路径！！！！！！
+vscode “Ctrl+Shift+P”打开搜索框，在搜索框里面输入“config”
+1)、 C/C++，这个肯定是必须的。
+2)、 C/C++ Snippets，即 C/C++重用代码块。
+3)、 C/C++ Advanced Lint,即 C/C++静态检测 。
+4)、 Code Runner，即代码运行。
+5)、 Include AutoComplete，即自动头文件包含。
+6)、 Rainbow Brackets，彩虹花括号，有助于阅读代码。
+7)、 One Dark Pro， VSCode 的主题。
+8)、 GBKtoUTF8，将 GBK 转换为 UTF8。
+9)、 ARM，即支持 ARM 汇编语法高亮显示。
+10)、 Chinese(Simplified)，即中文环境。
+11)、 vscode-icons， VSCode 图标插件，主要是资源管理器下各个文件夹的图标。
+12)、 compareit，比较插件，可以用于比较两个文件的差异。
+13)、 DeviceTree，设备树语法插件。
+14)、 TabNine，一款 AI 自动补全插件，强烈推荐，谁用谁知道！
+
+Windows 下使用 SecureCRT 作为终端， SecureCRT 支持SSH 以及串口，我们通常使用 SecureCRT 来作为串口终端使用
+MobaXterm MPU6050
+ Cortex-A 芯片一上电 SP 指针还没初始化， C 环境还没准备好，所以肯定不能运行 C 代码，必须先用汇编语言设置好 C 环境，比如初始化 DDR、设置 SP指针等等，当汇编把 C 环境设置好了以后才可以运行 C 代码。由 SP 指针访问， SP 指针指向栈顶。
+gdb 
+应用层如何操控底层硬件，同样也是通过文件 I/O 的方式来实现 /dev 目录下的文件称为设备节点 通过 sysfs 文件系统对硬件设备进行操控   
+sysfs 是一个基于内存的文件系统， 同 devfs、 proc 文件系统一样，称为虚拟文件系统； 它的作用是将内核信息以文件的方式提供给应用层使用 
+一般简单地设备会使用 sysfs 方式操控
+echo timer > trigger //将 LED 触发模式设置为 timer
+echo none > trigger //将 LED 触发模式设置为 none
+echo 1 > brightness //点亮 LED echo 0 > brightness//熄灭 LED
+
+
+echo 1 > /sys/class/leds/beep/brightness // 鸣叫
+echo 0 > /sys/class/leds/beep/brightness // 关闭
+
+arm-poky-linux-gnueabi-gcc
+
+sudo apt-get update // 先更新软列表（本地数据库）
+sudo apt-get install lzop // 安装 lzop 工具，用于生成压缩或解压镜像
+sudo apt-get install libncurses* // 安装 ncurese 相关库， U-boot 或者内核菜单显示时需要
+
+$CC main.c -o main
+
+ping： ping 是一种网络诊断工具 ping IP 地址
+
+总结一下我们为了编译 ARM 开发板上运行的 led.o 这个文件使用了如下命令：
+arm-linux-gnueabihf-gcc -g -c led.s -o led.o
+arm-linux-gnueabihf-ld -Ttext 0X87800000 led.o -o led.elf
+arm-linux-gnueabihf-objcopy -O binary -S -g led.elf led.bin
+arm-linux-gnueabihf-objdump -D led.elf > led.dis
+
+使用 imxdownload 向 SD 卡烧写 led.bin 文件，命令格式如下：
+./imxdownload <.bin file> <SD Card>
+
+中断向量表是一个表，这个表里面存放的是中断向量。中断服务程序的入口地址或存放中
+断服务程序的首地址成为中断向量，因此中断向量表是一系列中断服务程序入口地址组成的表
+中断服务程序(函数)在中断向量表中的位置是由半导体厂商定好的，当某个中断被触发以
+后就会自动跳转到中断向量表中对应的中断服务程序(函数)入口地址处。
+
+bootloader(U-boot)  linux内核 根文件系统rootfs(包含了指令和命令)  与其说是“移植”，倒不如说是“适配”
